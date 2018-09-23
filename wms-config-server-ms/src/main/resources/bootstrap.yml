@@ -1,0 +1,6 @@
+encrypt:
+  keyStore:
+    location: classpath:/server.jks
+    password: wms@2018_keyPass
+    alias: wms_key
+    secret: wms@2018_msPass

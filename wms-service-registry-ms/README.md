@@ -1,0 +1,2 @@
+# wms-service-registry-ms
+

@@ -1,0 +1,11 @@
+server:
+  port: 8903
+  servlet:
+    context-path: ${wms.microservices.context.user-management}
+
+spring:
+  application:
+    name: USER_MANAGEMENT
+  data:
+    mongodb:
+      uri: ${wms.microservices.database.user-management}

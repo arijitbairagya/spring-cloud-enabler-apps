@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    config:
+      uri : http://localhost:8902
+
+encrypt:
+  keyStore:
+    location: classpath:/server.jks
+    alias: wms_key
+    password: wms@2018_Pass
