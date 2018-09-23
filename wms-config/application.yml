@@ -1,0 +1,43 @@
+info:
+  description: Work Order Management System cofig
+  url: https://gitlab.com/wo_mnagement/wms-config
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8900/eureka/
+security:
+  oauth2:
+    client:
+      client-id: wms-ms
+      client-secret:  '{cipher}AQBhvwODixJC6YfLS/SlYQTjYgbw/s2P17G+I8OGRhaAPBmduTrZUcLfjneYvGwgE+26kBi7fZEY+3X5DUQuYufXxsvGzVeIQ9cSamGaIXpSlU0dWsf7UmH8LVrDji2eftGGVHQkXqhvP2l1NWvkTv4Mp0jX9AVMdmV89NgMygcpKmc68pzVH3Ivj9293yDwFWiGbOTf1UoFHga1SUg4K8r912vFGvSVF6cReH4F8E7wNG5QtRuRsrEf5gHZroyPkp/sx7YZjhAgtbGLKRQERZBh9suqUcQfAZy51nF6r5EN89RRr4EweLllSKXXt8X/h7mTIjZjQhlVVFzwAZX6ld6J1rldeQMOJ1BZZBbNNRSLhWOC4VgRt7NZxnpDJ0LwzqnaCJNIes/VrWnJjohG5EK2'
+      scope: read,write
+      auto-approve-scopes: '.*'
+      accessTokenUri: http://localhost:8000/wms/auth/oauth/token
+      userAuthorizationUri: http://localhost:8000/wms/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8000/wms/users/user
+      token-info-uri: http://localhost:8000/wms/auth/oauth/check_token
+      
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.netflix.discovery: 'OFF'
+    com.org.wms: DEBUG
+
+#Micro Service properties
+wms:
+  microservices:
+    context:
+      user-management: /wms/users
+      auth : /wms/auth
+      wo-management: /wms/wos
+      rbac: /wms/rbac
+    database:
+      user-management: mongodb://localhost:27017/wms-user
+      auth: mongodb://localhost:27017/wms-user
+      wo-management: mongodb://localhost:27017/wms-work-order
